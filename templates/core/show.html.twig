@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="article">
+      <img class="article-img" src="{{ article.picture }}" alt="{{ article.name }}">
+      <div class="article-body">
+          <p class="article-text">
+            {{ article.name }} <br>
+            {{ article.description }} <br>
+            {{ article.price / 100 }} €
+          </p>
+          {# <a href="{{ path('show_article', {'id': article.id}) }}" class="btn btn-primary">Lire</a> #}
+      </div>
+  </div>
+{% endblock %}

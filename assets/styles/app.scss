@@ -35,3 +35,29 @@ header{
         }
     }
 }
+
+.article-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .card{
+        width: 200px;
+        height: 300px;
+        background-color: #222222;
+        color: #fffaf0;
+        border-radius: 20px;
+        margin: 20px 10px 0;
+
+        .card-img{
+            width: 180px;
+            height: 180px;
+            margin: 10px;
+            border-radius: 50%;
+        }
+
+        .card-body{
+            text-align: center;
+        }
+    }
+}
