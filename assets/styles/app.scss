@@ -39,6 +39,7 @@ header{
 .article-container{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 
     .card{
@@ -48,6 +49,7 @@ header{
         color: #fffaf0;
         border-radius: 20px;
         margin: 20px 10px 0;
+        text-decoration: none;
 
         .card-img{
             width: 180px;
@@ -58,6 +60,133 @@ header{
 
         .card-body{
             text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+    }
+
+    .card:hover{
+        width: 240px;
+        height: 360px;
+        border: solid 5px #1C8ADB;
+
+    }
+}
+
+.article{
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+
+    .article-img{
+        width: 40%;
+        margin: 0 5%;
+    }
+    .article-body{
+        width: 40%;
+        margin: 0 5%;
+        text-align: center;
+
+        .article-name{
+            font-size: 3rem;
+            text-decoration: underline;
+        }
+
+        .article-description{
+            text-align: justify;
+            white-space: pre-wrap;
+        }
+
+        .article-price{
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+}
+
+form{
+    .login-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        input{
+            margin: 20px 0;
+            padding: 5px;
+            width:200px;
+            border: #222222 solid 3px;
+            border-radius: 20px;
+        }
+
+        label{
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        button{
+            padding: 5px 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 20px;
+            border: solid 2px #32cd32;
+            background-color: #fffaf0;
+            color: #32cd32;
+            cursor: pointer;
+        }
+
+        button:hover{
+            border: solid 2px #fffaf0;
+            background-color: #32cd32;
+            color: #fffaf0;
+            text-decoration: underline;
+        }
+    }
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    form > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input{
+        margin: 20px 0;
+        padding: 5px;
+        width:200px;
+        border: #222222 solid 3px;
+        border-radius: 20px;
+    }
+
+    label{
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    button{
+        padding: 5px 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 20px;
+        border: solid 2px #005CC8;
+        background-color: #fffaf0;
+        color: #005CC8;
+        cursor: pointer;
+    }
+
+    button:hover{
+        border: solid 2px #fffaf0;
+        background-color: #005CC8;
+        color: #fffaf0;
+        text-decoration: underline;
     }
 }

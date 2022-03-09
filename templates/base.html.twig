@@ -16,12 +16,18 @@
     <body>
     <header>
         <nav>
-            <div class="logo">
+            <a href="{{ path('index') }}" class="logo">
                 LOGO
-            </div>
+            </a>
             <ul>
-                <li><a href="">SHOP</a></li>
-                <li><a href="">ACCOUNT</a></li>
+                <li><a href="{{ path('index') }}">SHOP</a></li>
+                <li>
+                    {% if app.user %}
+                        <a href="{{ path('app_login') }}">ACCOUNT</a>
+                        {% else %}
+                        <a href="{{ path('app_login') }}">LOGIN</a>
+                    {% endif %}
+                </li>
                 <li><a href="">CART</a></li>
             </ul>
         </nav>

@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
 use App\Entity\Comment;
+use App\Entity\Article;
 use App\Form\CommentType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,19 +48,19 @@ class CoreController extends AbstractController
      */
     public function show( Article $article, CommentRepository $commentRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
-        // dd(($this->security->getUser()));
-        // dd($article);
+            // dd(($this->security->getUser()));
+            // dd($article);
         $comments = $commentRepository->findBy(
             ['Article' => $article],
-            ['creationDate' => 'ASC']
+            ['postDate' => 'ASC']
         );
 
-        // $time = date('Y/m/d H:i:s');
+            // $time = date('Y/m/d H:i:s');
         $time = new \DateTime();
         $comment = new Comment();
         $comment->setUser($this->security->getUser());
         $comment->setArticle($article);
-        $comment->setCreationDate($time);
+        $comment->setPostDate($time);
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
@@ -67,7 +68,7 @@ class CoreController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
-            // return $this->redirectToRoute('comment_index', [], Response::HTTP_SEE_OTHER);
+                // return $this->redirectToRoute('comment_index', [], Response::HTTP_SEE_OTHER);
             return $this->redirect($request->getUri()); // Reload page after submit
         }
 
@@ -75,6 +76,6 @@ class CoreController extends AbstractController
             'comment' => $comment, 'form' => $form, 'article' => $article, 'comments' => $comments
         ]);
 
-        // return $this->render('core/show.html.twig', ['article' => $article, 'comments' => $comments]);
+            // return $this->render('core/show.html.twig', ['article' => $article, 'comments' => $comments]);
     }
 }

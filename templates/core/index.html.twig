@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Homepage
+    |
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
     <section class="article-container">
         {% for article in articles %}
-            <div class="card">
+            <a href="{{ path('show_article', {'id': article.id}) }}" class="card">
                 <div class="card-body">
                     <p class="card-title">{{ article.name }}</p>
                     <img class="card-img" src="{{ article.picture }}" alt="{{ article.name }}">
@@ -12,7 +18,7 @@
                     </p>
                     {# <a href="{{ path('show_article', {'id': article.id}) }}" class="btn btn-primary">Lire</a> #}
                 </div>
-            </div>
+            </a>
         {% endfor %}
     </section>
 {% endblock %}
