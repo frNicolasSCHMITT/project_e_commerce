@@ -8,12 +8,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
+use App\Repository\UserRepository;
 use App\Entity\Comment;
 use App\Entity\Article;
+use App\Entity\User;
 use App\Form\CommentType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
 class CoreController extends AbstractController
@@ -77,5 +80,46 @@ class CoreController extends AbstractController
         ]);
 
             // return $this->render('core/show.html.twig', ['article' => $article, 'comments' => $comments]);
+    }
+
+    /**
+     * @Route("/account", name="user_account")
+     */
+    public function account(AuthenticationUtils $authenticationUtils, CommentRepository $commentRepository, UserRepository $userRepository): Response
+    {
+        if ($this->getUser()) {
+
+            // get the login error if there is one
+            $error = $authenticationUtils->getLastAuthenticationError();
+            // last username entered by the user
+            $lastUsername = $authenticationUtils->getLastUsername();
+                
+            $loggedUser = $this->security->getUser();
+
+            $comments = $commentRepository->findBy(
+                ['User' => $loggedUser],
+                ['postDate' => 'ASC']
+            );  
+
+            $users = $userRepository->findBy(
+                ['email' => $loggedUser->getUserIdentifier()]
+            );
+
+            // get the login error if there is one
+            $error = $authenticationUtils->getLastAuthenticationError();
+            // last username entered by the user
+            $lastUsername = $authenticationUtils->getLastUsername();
+
+
+            return $this->render('core/account.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'comments' => $comments, 'users' => $users]);
+        
+        }
+
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('core/index.html.twig', []);
     }
 }

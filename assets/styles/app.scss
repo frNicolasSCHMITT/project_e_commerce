@@ -25,9 +25,10 @@ header{
                 a{
                     color: unset;
                     text-decoration: none;
+                    font-weight: bold;
                 }
                 a:hover{
-                    color: limegreen;
+                    color: #2db92d;
                     text-decoration: underline;
                     text-underline-offset: 10px;
                 }
@@ -126,24 +127,6 @@ form{
             font-weight: bold;
             font-size: 1.5rem;
         }
-
-        button{
-            padding: 5px 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 20px;
-            border: solid 2px #32cd32;
-            background-color: #fffaf0;
-            color: #32cd32;
-            cursor: pointer;
-        }
-
-        button:hover{
-            border: solid 2px #fffaf0;
-            background-color: #32cd32;
-            color: #fffaf0;
-            text-decoration: underline;
-        }
     }
 }
 
@@ -171,22 +154,112 @@ form{
         font-weight: bold;
         font-size: 1.5rem;
     }
+}
 
-    button{
-        padding: 5px 10px;
-        font-size: 1rem;
-        font-weight: bold;
-        border-radius: 20px;
-        border: solid 2px #005CC8;
-        background-color: #fffaf0;
-        color: #005CC8;
-        cursor: pointer;
+#comment > div > label {
+    display: none;
+}
+
+.base-btn{
+    margin: 20px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: solid 2px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.red-btn{
+    background-color: #fffaf0;
+    border-color: #af0000;
+    color: #af0000;
+}
+
+.red-btn:hover{
+    background-color: #af0000;
+    color: #fffaf0;
+    text-decoration: underline;
+}
+
+.green-btn{
+    background-color: #fffaf0;
+    border-color: #2db92d;
+    color: #2db92d;
+}
+
+.green-btn:hover{
+    background-color: #2db92d;
+    color: #fffaf0;
+    text-decoration: underline;
+}
+
+.blue-btn{
+    background-color: #fffaf0;
+    border-color: #005CC8;
+    color: #005CC8;
+}
+
+.blue-btn:hover{
+    background-color: #005CC8;
+    color: #fffaf0;
+    text-decoration: underline;
+}
+
+.comment-container{
+    margin-left: 5%;
+
+    h3{
+        margin-left: 5%;
     }
 
-    button:hover{
-        border: solid 2px #fffaf0;
-        background-color: #005CC8;
-        color: #fffaf0;
-        text-decoration: underline;
+    .comment-post{
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .comment-form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+.user-welcome{
+    margin: 5%;
+
+    p{
+        font-style: italic;
+    }
+
+    .user-profile{
+        margin-bottom: 25px;
+        display: flex;
+
+    }
+}
+  
+.table-header{
+margin: 5%;
+justify-content: space-between;
+}
+
+tr:nth-child(even) {background: #e4e4e4}
+tr:nth-child(odd) {background: #FFF}
+
+.table{
+    width: 90%;
+    margin: 0 5%;
+    border: #222222 solid 2px;
+    border-radius: 5px;
+
+    thead{
+        tr{
+            background-color: #222222;
+            color: #fffaf0;
+        }
     }
 }

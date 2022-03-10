@@ -14,6 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+use DateTime;
+
 class RegistrationController extends AbstractController
 {
     /**
@@ -21,11 +23,13 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
+        $time = new \DateTime();
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setInscriptionDate($time);
             // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
@@ -43,6 +47,7 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 $request
             );
+            return $this->render('core/account.html.twig', []);
         }
 
         return $this->render('registration/register.html.twig', [
