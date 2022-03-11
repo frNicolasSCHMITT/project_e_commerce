@@ -111,7 +111,7 @@ class CoreController extends AbstractController
             $lastUsername = $authenticationUtils->getLastUsername();
 
 
-            return $this->render('core/account.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'comments' => $comments, 'users' => $users]);
+            return $this->render('core/account.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'comments' => $comments, 'user' => $loggedUser]);
         
         }
 

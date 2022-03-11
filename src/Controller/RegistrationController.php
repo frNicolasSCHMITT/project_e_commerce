@@ -15,9 +15,23 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 use DateTime;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Repository\UserRepository;
 
 class RegistrationController extends AbstractController
 {
+
+    /**
+     * @var Security
+     */
+    private $security;
+
+    public function __construct(Security $security )
+    {
+        $this->security = $security;
+    }
+
     /**
      * @Route("/register", name="app_register")
      */
@@ -30,6 +44,8 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setInscriptionDate($time);
+            $user->setUserName($user->getEmail());
+            $user->setUserPicture("https://www.pinclipart.com/picdir/middle/157-1578186_user-profile-default-image-png-clipart.png");
             // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
@@ -47,7 +63,7 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 $request
             );
-            return $this->render('core/account.html.twig', []);
+            
         }
 
         return $this->render('registration/register.html.twig', [

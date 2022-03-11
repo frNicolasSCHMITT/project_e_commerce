@@ -24,26 +24,27 @@
   </div>
 
   <div class="comment-container">
-            <h3>Comments :</h3>
+            <h3>Reviews :</h3>
             <div class="comment-post">
-                <p>Post your comment :</p>
+                <p>Post your review :</p>
                 {{ include('comment/_form.html.twig') }}
             </div>
-            <div class="column comments-container">
+            <div class="comments-container">
                 <ul>
                     {% for comment in comments %}
                         <li class="bloc-comment">
-                            <div class="user-profile">
-                                <p>By : </p>                            
-                                <div class="user-picture">
-                                    <img src="{{ comment.user.userPicture }}" alt="" class="img-fluid">
+                            <div class="comment-specs">
+                                <div class="user-profile">                        
+                                    <div class="user-picture">
+                                        <img src="{{ comment.user.userPicture }}" alt="" class="">
+                                    </div>
+                                    <div class="comment-owner">{{ comment.user.userName }}</div>
                                 </div>
-                                <div class="comment-owner">{{ comment.user.userName }}</div>
+                                <div class="comment-date">{{ comment.postDate|date('Y/m/d') }}</div>
                             </div>
                             <div class="comment-content">
                                 {{ comment.content }}
                             </div>
-                            <div class="comment-date">Added : {{ comment.postDate|date('Y/m/d H:i:s') }}</div>
                         </li>
                     {% endfor %}
                 </ul>

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ "User Account" }}
-    |
-    {{ parent() }}
+  {{ "User Account" }}
+  |
+  {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -12,14 +12,14 @@
             <div class="user-profile">
                 <div class="user-picture">
                     <img src="{{ app.user.userPicture }}" alt="" class="img-fluid">
-                </div> 
+                </div>
                 <div class="user-pres">
                     <p>You are logged in as </p>
                     <div>{{ app.user.userName }}</div> 
-                </div>                 
+                </div>
+                <a class="base-btn blue-btn edit-btn" href="{{ path('app_user_edit', {'id': user.id}) }}">Modify account</a>              
             </div>
             <a class="base-btn red-btn" href="{{ path('app_logout') }}">Logout</a>
-            {# {{ include('user/index.html.twig') }} #}
         </div>
         <div class="row table-header">
             <h3>Your Reviews :</h3>
