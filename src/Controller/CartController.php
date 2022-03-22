@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Repository\ArticleRepository;
+use App\Service\Cart\CartService;
 
 class CartController extends AbstractController
 {
@@ -46,18 +47,8 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/add/{id}", name="cart_add")
      */
-    public function add($id, RequestStack $RequestStack){
-        $session = $RequestStack->getSession();
-        
-        $cart = $session->get('cart', []);
-
-        if(!empty($cart[$id])){
-            $cart[$id]++;
-        } else {
-            $cart[$id] = 1;
-        }
-
-        $session->set('cart', $cart);
+    public function add($id, CartService $cartService){
+        $cartService->add($id);
 
         return $this->redirectToRoute("app_cart");
     }
@@ -65,16 +56,17 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/remove/{id}", name="cart_remove")
      */
-    public function remove($id, RequestStack $RequestStack){
-        $session = $RequestStack->getSession();
+    public function remove($id, CartService $cartService){
+        $cartService->remove($id);
 
-        $cart = $session->get('cart', []);
+        return $this->redirectToRoute("app_cart");
+    }
 
-        if(!empty($cart[$id])){
-            unset($cart[$id]);
-        }
-
-        $session->set('cart', $cart);
+    /**
+     * @Route("/cart/delete/{id}", name="cart_delete")
+     */
+    public function delete($id, CartService $cartService){
+        $cartService->delete($id);
 
         return $this->redirectToRoute("app_cart");
     }

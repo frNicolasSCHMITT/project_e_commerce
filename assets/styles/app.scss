@@ -175,6 +175,15 @@ form{
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+
+    svg{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
 }
 
 .red-btn{
@@ -407,4 +416,49 @@ tr:nth-child(odd) {background: #f5f5f5}
             }
         }
     }
+}
+
+.cart-table{
+
+    text-align: center;
+    width: 90%;
+    margin: 5%;
+    border-collapse: collapse; 
+
+    tr{
+        background-color: #ffffff;        
+    }
+
+    tr:not(:last-child){
+        border-bottom: #222222 solid 2px;
+    }
+
+    th{
+        min-width: 50px;
+        background-color: #222222;
+        color: #fffaf0;
+    }
+
+    .actions-group{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        a{
+            margin: 10px;
+        }
+    }
+
+    .table-spacer{
+        height: 10px;
+    }
+
+    tfoot{
+        tr{
+            .table-total{
+                text-align: right;
+            }
+        }
+    }
+    
 }
