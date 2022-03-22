@@ -28,7 +28,13 @@
                         <a href="{{ path('app_login') }}">LOGIN</a>
                     {% endif %}
                 </li>
-                <li><a href="">CART</a></li>
+                <li>
+                    {% if app.user %}
+                        <a href="{{ path('app_cart')}}">CART</a>
+                        {% else %}
+                        <a href="{{ path('app_register') }}">REGISTER</a>
+                    {% endif %}
+                </li>
             </ul>
         </nav>
     </header>

@@ -171,40 +171,70 @@ form{
     text-decoration: none;
 }
 
+.flex-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .red-btn{
     background-color: #fffaf0;
     border-color: #af0000;
     color: #af0000;
+
+    svg{
+        fill: #af0000;
+    }
 }
 
 .red-btn:hover{
     background-color: #af0000;
     color: #fffaf0;
     text-decoration: underline;
+
+    svg{
+        fill: #fffaf0;
+    }
 }
 
 .green-btn{
     background-color: #fffaf0;
     border-color: #2db92d;
     color: #2db92d;
+
+    svg{
+        fill: #2db92d;
+    }
 }
 
 .green-btn:hover{
     background-color: #2db92d;
     color: #fffaf0;
     text-decoration: underline;
+
+    svg{
+        fill: #fffaf0;
+    }
 }
 
 .blue-btn{
     background-color: #fffaf0;
     border-color: #005CC8;
     color: #005CC8;
+
+    svg{
+        fill: #005CC8;
+    }
 }
 
 .blue-btn:hover{
     background-color: #005CC8;
     color: #fffaf0;
     text-decoration: underline;
+
+    svg{
+        fill: #fffaf0;
+    }
 }
 
 .edit-btn{

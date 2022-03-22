@@ -19,7 +19,11 @@
         <p class="article-price">
           {{ article.price / 100 }} €
         </p>
-          {# <a href="{{ path('show_article', {'id': article.id}) }}" class="btn btn-primary">Lire</a> #}
+            {% if app.user %}
+                <a href="{{ path('cart_add', {'id': article.id}) }}" class="base-btn green-btn">Add to Cart</a>
+                {% else %}
+                <a href="{{ path('app_login') }}" class="base-btn red-btn">Log In to Order</a>
+            {% endif %}
       </div>
   </div>
 
