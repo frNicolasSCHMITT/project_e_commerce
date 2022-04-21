@@ -53,6 +53,25 @@ class CoreController extends AbstractController
     }
 
     /**
+     * @Route("/search", name="index_search")
+     */
+
+    public function popularAnswers(ArticleRepository $articleRepository, Request $request, PaginatorInterface $paginator)
+    {
+        $data = $articleRepository->findQuery(
+            $request->query->get('q')
+        );
+
+        $articles = $paginator->paginate(
+            $data, 
+            $request->query->getInt('page', 1), 
+            10
+        );
+
+        return $this->render('core/index.html.twig', ['articles' => $articles]);
+    }
+    
+    /**
      * @Route("/index/{id}", name="show_article", requirements={"id"="\d+"}, methods={"GET", "POST"})
      */
     public function show( Article $article, CommentRepository $commentRepository, Request $request, EntityManagerInterface $entityManager): Response

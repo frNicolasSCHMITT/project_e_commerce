@@ -73,4 +73,20 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Article[] Returns an array of Article objects
+     */
+    public function findQuery(string $search = null): array
+    {
+        $queryBuilder = $this->createQueryBuilder('article')
+            ->orderBy('article.name', 'ASC');
+        if ($search) {
+            $queryBuilder->andWhere('article.name LIKE :searchTerm')
+                ->setParameter('searchTerm', '%'.$search.'%');
+        }
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+    }
 }

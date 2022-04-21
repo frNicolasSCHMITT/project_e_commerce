@@ -7,6 +7,19 @@
 {% endblock %}
 
 {% block body %}
+<div class="search-block">
+    <p>Search :</p>
+    <form action="{{ path('index_search') }}">
+        <input
+            type="search"
+            name="q"
+            class="form-control searchbar"
+            placeholder="Type here"
+            aria-label="Search"
+        >
+        <input type="submit" value="Submit" class="base-btn blue-btn">
+    </form>
+</div>
     <section class="article-container">
         {% for article in articles %}
             <a href="{{ path('show_article', {'id': article.id}) }}" class="card">
