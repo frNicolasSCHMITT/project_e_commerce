@@ -21,6 +21,7 @@ header{
             justify-content: space-evenly;
 
             li{
+                margin: 0 15px;
 
                 a{
                     color: unset;
@@ -28,7 +29,7 @@ header{
                     font-weight: bold;
                 }
                 a:hover{
-                    color: #2db92d;
+                    color: #1C8ADB;
                     text-decoration: underline;
                     text-underline-offset: 10px;
                 }
@@ -51,12 +52,14 @@ header{
         border-radius: 20px;
         margin: 20px 10px 0;
         text-decoration: none;
+        overflow: hidden;
 
         .card-img{
             width: 180px;
             height: 180px;
             margin: 10px;
             border-radius: 50%;
+            transition: transform .75s;
         }
 
         .card-body{
@@ -67,14 +70,21 @@ header{
             justify-content: center;
             align-items: center;
         }
+
+        p{
+            font-weight: bold;
+        }
     }
 
     .card:hover{
         box-shadow: 0 0 30px #005CC8;
 
-        .card-img{            
-            width: 210px;
-            height: 210px;
+        .card-img{
+            transform: scale(2);
+        }
+
+        p{
+            z-index: 9;
         }
     }
 }
@@ -469,4 +479,39 @@ tr:nth-child(odd) {background: #f5f5f5}
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.pagination{
+
+    text-align: right;
+    margin: 50px;
+
+    span{
+        
+        margin: 5px;
+
+        a{
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: solid 2px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            color: #222222;
+        }
+
+        a:hover{
+
+            color: #ffffff;
+            background-color: #005CC8;
+        }
+    }
+
+    .current{
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        color: #005CC8;
+        font-weight: bold;
+    }
 }
