@@ -47,8 +47,9 @@ header{
     .card{
         width: 250px;
         height: 300px;
-        background-color: #222222;
-        color: #fffaf0;
+        // background-color: #222222;
+        // color: #fffaf0;
+        border: solid 3px #222222;
         border-radius: 20px;
         margin: 20px 10px 0;
         text-decoration: none;
@@ -73,6 +74,10 @@ header{
 
         p{
             font-weight: bold;
+            color: #222222;
+            background-color:#ffffff;
+            padding: 5px;
+            border-radius: 5px;
         }
     }
 
