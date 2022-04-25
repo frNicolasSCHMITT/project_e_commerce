@@ -538,3 +538,9 @@ tr:nth-child(odd) {background: #f5f5f5}
         }
     }
 }
+
+.nav-header{
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
